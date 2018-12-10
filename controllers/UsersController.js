@@ -71,3 +71,23 @@ const authUser = async function (userInfo) {//returns token
 
 }
 module.exports.authUser = authUser;
+
+const update = async function (req, res) {
+  let err, user, data;
+  user = req.user;
+  data = req.body;
+  user.set(data);
+  [err, user] = await to(user.save());
+  if (err) {
+    if (typeof err == 'object' && typeof err.message != 'undefined') {
+      err = err.message;
+    }
+
+    if (typeof code !== 'undefined') res.statusCode = code;
+    res.statusCode = 422
+    return res.json({ success: false, error: err });
+  }
+
+  return res.json(user);
+}
+module.exports.update = update;

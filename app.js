@@ -67,6 +67,7 @@ app.get('/sessions/:sessionId', passport.authenticate('jwt', { session: false })
 app.post('/sessions', passport.authenticate('jwt', { session: false }), sessions.create);
 app.put('/sessions', passport.authenticate('jwt', { session: false }), sessions.update);
 app.post('/users', userController.create);
+app.put('/users', passport.authenticate('jwt', { session: false }), userController.update);
 app.post('/login', userController.login);
 app.post('/ratings/:sessionId', passport.authenticate('jwt', { session: false }), ratings.create);
 app.put('/ratings/:ratingId', passport.authenticate('jwt', { session: false }), ratings.update);
