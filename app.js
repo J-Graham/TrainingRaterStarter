@@ -1,5 +1,5 @@
 const express = require('express');
-require('./config/config');
+require('./config/sync_config/config');
 const models = require('./models');
 require('./global_functions');
 const sessions = require('./controllers/SessionsController');
