@@ -8,6 +8,7 @@ matrix:
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install
+  - npm i -g @angular/cli@1.7.4
 
 test_script:
   - node --version
